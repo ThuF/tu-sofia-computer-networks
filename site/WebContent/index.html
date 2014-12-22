@@ -9,8 +9,6 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Web Sockets</title>
-
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
@@ -31,7 +29,9 @@
 </head>
 
 <body>
-    <div class="brand">Web Sockets</div>
+
+	<!-- Header -->
+    <div id="header"></div>
 
     <!-- Navigation -->
     <div id="navigation"></div>
@@ -132,6 +132,7 @@
     <script src="js/jquery.js"></script>
     <script type="text/javascript">
     $(function(){
+    	  $("#header").load("header.html");
     	  $("#navigation").load("default-navigation.html"); 
     	});
 	</script>
