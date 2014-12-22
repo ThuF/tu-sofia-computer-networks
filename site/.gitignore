@@ -1,0 +1,15 @@
+### Ignore
+/bin
+/build
+/target
+/.settings
+
+*.class
+.*
+*~
+*.*~
+.classpath
+
+### Exceptions
+!.gitignore
+!.project
