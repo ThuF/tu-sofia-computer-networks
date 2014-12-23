@@ -191,6 +191,14 @@ footer p {
     }
 }
 
-.top-buffer { 
+.top-buffer-sm { 
+	margin-top: 20px;
+}
+
+.top-buffer-md { 
 	margin-top: 40px;
+}
+
+.top-buffer-lg { 
+	margin-top: 60px;
 }
