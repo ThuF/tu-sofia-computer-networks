@@ -190,3 +190,7 @@ footer p {
         clear: both;
     }
 }
+
+.top-buffer { 
+	margin-top: 40px;
+}
