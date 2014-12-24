@@ -47,9 +47,9 @@
                     </h2>
                     <hr>
                 </div>
-                <ul>
+                <ul class="breadcrumb text-center top-buffer-lg">
 	                <li>
-		                <a href="#load_balance">Разпределение на натоварването</a>
+		                <a href="#load_balancing">Разпределение на натоварването</a>
 	                </li>
 	                <li>
 		                <a href="#compare_with_rest">Сравнение с REST</a>
@@ -61,9 +61,13 @@
 		                <a href="#supported_browsers">Браузъри поддържащи websocket-и</a>
 	                </li>
                 </ul>
-                <div id="load_balance" class="col-md-12">
+                <div id="load_balancing" class="col-md-12 top-buffer-lg">
+                	<p>Разпределението на натоварването (<a href="http://en.wikipedia.org/wiki/Load_balancing_%28computing%29">Load Balancing</a>),
+                	при WebSocket-ите се извършва чрез <a href="http://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling">vertical scaling</a>.
+                	Това означава, че при необходимост към сървърите се добавят CPU, RAM и др., за разлика от horizontal scaling, където се добавят нови сървъри, клъстери и др.
+                	WebSocket протокола е stateful, следователно при отказ на някой от сървърите, не съществува механизаъм за session failover.</p>
                 </div>
-                <div id="compare_with_rest" class="container">
+                <div id="compare_with_rest" class="top-buffer-lg container">
                 	<div class="row">
 	                	<p>Графики показващи сравнението между WebSocket-и и REST, при увеличаващ се брой съобщения и константен payload</p>
 	                	<div class="col-md-6">
@@ -93,18 +97,25 @@
                 	</div>
                 </div>
                 <div id="pros_and_cons" class="col-md-12">
+                	<p>Предимства:</p>
+                	<ul>
+                		<li>Bi-directional връзка (сървъра и/или клиента могат да започнат връзката)</li>
+                		<li>Full-duplex</li>
+                		<li>Олекотен протокол. За изпращане на "Hello World" съобщение са нужни само 2 байта. За сравнение през HTTP са нужни 663 байта.</li>
+                		<li>Преизползва се една и съща TCP връзка. При HTTP, за всяко съобщение се създава нова връзка.</li>
+                	</ul>
+                	<p>Недостатъци:</p>
+                	<ul>
+                		<li>Vertical Scalability</li>
+                	</ul>
                 </div>
-                <div id="supported_browsers" class="col-md-12">
+                <div id="supported_browsers" class="col-md-12 top-buffer-lg">
+                	<p>Списък на браузърите, които поддържат websocket-и</p>
                 	<a href="../../img/more/supported-browsers.png" target="_blank">
 		                <img style="width: 100%" alt="Списък на браузърите, в които се поддържат websocket-и" src="../../img/more/supported-browsers.png">
                 	</a>
 	                <a href="http://caniuse.com/websockets" target="_blank">Can I Use Websockets?</a>
                 </div>
-                <div class="col-md-12">
-                    <!-- Embedded Google Map using an iframe - to select your location find it on Google maps and paste the link as the iframe src. If you want to use the Google Maps API instead then have at it! -->
-                    <iframe width="100%" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.com/maps?hl=en&amp;ie=UTF8&amp;ll=37.0625,-95.677068&amp;spn=56.506174,79.013672&amp;t=m&amp;z=4&amp;output=embed"></iframe>
-                </div>
-                <div class="clearfix"></div>
             </div>
         </div>
 
