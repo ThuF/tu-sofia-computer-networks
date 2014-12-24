@@ -36,60 +36,120 @@
     <!-- Navigation -->
     <div id="navigation"></div>
 
-    <div class="container">
+    <div class="container box">
+	    <hr>
+    	<h2 class="intro-text text-center"><strong>API</strong>
+    	</h2>
+    	<hr>
+    	<ul class="breadcrumb text-center">
+    		<li><a href="#javascript">JavaScript</a></li>
+    		<li><a href="#java">Java</a></li>
+    	</ul>
+    	<h4 id="javascript" class="top-buffer-lg text-center">JavaScript API</h4>
+    	<pre class="top-buffer-md">
+  	[Constructor(DOMString url, optional (DOMString or DOMString[]) protocols)]
+		interface WebSocket : EventTarget {
+			readonly attribute DOMString url;
 
-        <div class="row">
-            <div class="box">
-                <div class="col-lg-12">
-                    <hr>
-                    <h2 class="intro-text text-center">About
-                        <strong>business casual</strong>
-                    </h2>
-                    <hr>
-                </div>
-                <div class="col-md-6">
-                    <img class="img-responsive img-border-left" src="img/slide-2.jpg" alt="">
-                </div>
-                <div class="col-md-6">
-                    <p>This is a great place to introduce your company or project and describe what you do.</p>
-                    <p>Lid est laborum dolo rumes fugats untras. Etharums ser quidem rerum facilis dolores nemis omnis fugats vitaes nemo minima rerums unsers sadips amets.</p>
-                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
-                </div>
-                <div class="clearfix"></div>
-            </div>
-        </div>
+			// ready state
+			const unsigned short CONNECTING = 0;
+			const unsigned short OPEN = 1;
+			const unsigned short CLOSING = 2;
+			const unsigned short CLOSED = 3;
+			
+			readonly attribute unsigned short readyState;
+			readonly attribute unsigned long bufferedAmount;
 
-        <div class="row">
-            <div class="box">
-                <div class="col-lg-12">
-                    <hr>
-                    <h2 class="intro-text text-center">Our
-                        <strong>Team</strong>
-                    </h2>
-                    <hr>
-                </div>
-                <div class="col-sm-4 text-center">
-                    <img class="img-responsive" src="http://placehold.it/750x450" alt="">
-                    <h3>John Smith
-                        <small>Job Title</small>
-                    </h3>
-                </div>
-                <div class="col-sm-4 text-center">
-                    <img class="img-responsive" src="http://placehold.it/750x450" alt="">
-                    <h3>John Smith
-                        <small>Job Title</small>
-                    </h3>
-                </div>
-                <div class="col-sm-4 text-center">
-                    <img class="img-responsive" src="http://placehold.it/750x450" alt="">
-                    <h3>John Smith
-                        <small>Job Title</small>
-                    </h3>
-                </div>
-                <div class="clearfix"></div>
-            </div>
-        </div>
-
+			// networking
+			attribute EventHandler onopen;
+			attribute EventHandler onerror;
+			attribute EventHandler onclose;
+			
+			readonly attribute DOMString extensions;
+			readonly attribute DOMString protocol;
+			void close([Clamp] optional unsigned short code, optional DOMString reason);
+			
+			// messaging
+			attribute EventHandler onmessage;
+			attribute DOMString binaryType;
+			
+			void send(DOMString data);
+			void send(Blob data);
+			void send(ArrayBuffer data);
+			void send(ArrayBufferView data);
+	};
+    	</pre>
+    	<a href="http://www.w3.org/TR/websockets/" target="_blank">http://www.w3.org/TR/websockets/</a>
+    	<h4 id="java" class="top-buffer-lg text-center">Java API</h4>
+    	<p>Java API-то може да се ползва, както за клиентската, така и за сървърната част на приложението.
+    	Съществувта два подхода за дефиниране на WebSocket Endpoint с Java - програмен и чрез анотации.</p>
+    	<p class="top-buffer-md">Програмен модел</p>
+    	<table class="table table-bordered table-hover">
+    	<thead>
+    		<tr>
+    			<th>Class</th>
+    			<th>Description</th>
+    		</tr>
+    	</thead>
+    	<tbody>
+    		<tr>
+    			<td><a href="http://docs.oracle.com/javaee/7/api/javax/websocket/ClientEndpointConfig.Builder.html" target="_blank">ClientEndpointConfig.Builder</a></td>
+    			<td>The ClientEndpointConfig.Builder is a class used for creating ClientEndpointConfig objects for the purposes of deploying a client endpoint.</td>
+    		</tr>
+    		<tr>
+    			<td><a href="http://docs.oracle.com/javaee/7/api/javax/websocket/ClientEndpointConfig.Configurator.html" target="_blank">ClientEndpointConfig.Configurator</a></td>
+    			<td>The Configurator class may be extended by developers who want to provide custom configuration algorithms, such as intercepting the opening handshake, or providing arbitrary methods and algorithms that can be accessed from each endpoint instance configured with this configurator.</td>
+    		</tr>
+    		<tr>
+    			<td><a href="http://docs.oracle.com/javaee/7/api/javax/websocket/CloseReason.html" target="_blank">CloseReason</a></td>
+    			<td>A class encapsulating the reason why a web socket has been closed, or why it is being asked to close.</td>
+    		</tr>
+    		<tr>
+    			<td><a href="http://docs.oracle.com/javaee/7/api/javax/websocket/ContainerProvider.html" target="_blank">ContainerProvider</a></td>
+    			<td>Provider class that allows the developer to get a reference to the implementation of the WebSocketContainer.</td>
+    		</tr>
+    		<tr>
+    			<td><a href="http://docs.oracle.com/javaee/7/api/javax/websocket/Endpoint.html" target="_blank">Endpoint</a></td>
+    			<td>The Web Socket Endpoint represents an object that can handle websocket conversations.</td>
+    		</tr>
+    		<tr>
+    			<td><a href="http://docs.oracle.com/javaee/7/api/javax/websocket/SendResult.html" target="_blank">SendResult</a></td>
+    			<td>The result of asynchronously sending a web socket message.</td>
+    		</tr>
+    	</tbody>
+    	</table>
+    	<p class="top-buffer-md">Анотационен модел</p>
+    	<table class="table table-bordered table-hover">
+    		<thead>
+    			<tr>
+	    			<th>Annotation</th>
+	    			<th>Description</th>
+    			</tr>
+    		</thead>
+    		<tbody>
+    			<tr>
+    				<td><a href="http://docs.oracle.com/javaee/7/api/javax/websocket/ClientEndpoint.html" target="_blank">ClientEndpoint</a></td>
+    				<td>The ClientEndpoint annotation a class level annotation is used to denote that a POJO is a web socket client and can be deployed as such.</td>
+    			</tr>
+    			<tr>
+    				<td><a href="http://docs.oracle.com/javaee/7/api/javax/websocket/OnClose.html" target="_blank">OnClose</a></td>
+    				<td>This method level annotation can be used to decorate a Java method that wishes to be called when a web socket session is closing.</td>
+    			</tr>
+    			<tr>
+    				<td><a href="http://docs.oracle.com/javaee/7/api/javax/websocket/OnError.html" target="_blank">OnError</a></td>
+    				<td>This method level annotation can be used to decorate a Java method that wishes to be called in order to handle errors.</td>
+    			</tr>
+    			<tr>
+    				<td><a href="http://docs.oracle.com/javaee/7/api/javax/websocket/OnMessage.html" target="_blank">OnMessage</a></td>
+    				<td>This method level annotation can be used to make a Java method receive incoming web socket messages.</td>
+    			</tr>
+    			<tr>
+    				<td><a href="http://docs.oracle.com/javaee/7/api/javax/websocket/OnOpen.html" target="_blank">OnOpen</a></td>
+    				<td>This method level annotation can be used to decorate a Java method that wishes to be called when a new web socket session is open.</td>
+    			</tr>
+    		</tbody>
+    	</table>
+    	<a href="http://docs.oracle.com/javaee/7/api/javax/websocket/package-summary.html">http://docs.oracle.com/javaee/7/api/javax/websocket/package-summary.html</a>
     </div>
     <!-- /.container -->
 
