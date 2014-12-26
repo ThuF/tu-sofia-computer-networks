@@ -1,9 +1,10 @@
 var wsUri = "wss://" + document.location.hostname + ":" + document.location.port + document.location.pathname + "whiteboard";
 var websocket = new WebSocket(wsUri);
 websocket.binaryType = "arraybuffer";
-var output = document.getElementById("output");
 websocket.onmessage = function(evt) { onMessage(evt); };
 websocket.onerror = function(evt) { onError(evt); };
+
+var output = document.getElementById("output");
 
 function sendText(json) {
     websocket.send(json);

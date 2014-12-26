@@ -1,38 +1,36 @@
-var canvas = document.getElementById("myCanvas");
-var context = canvas.getContext("2d");
-canvas.addEventListener("click", defineImage, false);
+var whiteboard = document.getElementById("whiteboard");
+whiteboard.addEventListener("click", defineImage, false);
+
+var context = whiteboard.getContext("2d");
             
-function getCurrentPos(evt) {
-    var rect = canvas.getBoundingClientRect();
+function getCurrentPosition(evt) {
+    var rect = whiteboard.getBoundingClientRect();
     return {
         x: evt.clientX - rect.left,
         y: evt.clientY - rect.top
     };
 }
-            
+
+var shape = 'square';
+var color = '#FF0000';
+
+function setShape(newShape) {
+	shape = newShape;
+}
+
+function setColor(newColor) {
+	color = newColor;
+}
+
 function defineImage(evt) {
-    var currentPos = getCurrentPos(evt);
-    
-    for (var i = 0; i <document.inputForm.color.length; i++) {
-        if (document.inputForm.color[i].checked) {
-            var color = document.inputForm.color[i];
-            break;
-        }
-    }
-            
-    for (i = 0; i < document.inputForm.shape.length; i++) {
-        if (document.inputForm.shape[i].checked) {
-            var shape = document.inputForm.shape[i];
-            break;
-        }
-    }
+    var currentPosition = getCurrentPosition(evt);
     
     var json = JSON.stringify({
-        "shape": shape.value,
-        "color": color.value,
+        "shape": shape,
+        "color": color,
         "coords": {
-            "x": currentPos.x,
-            "y": currentPos.y
+            "x": currentPosition.x,
+            "y": currentPosition.y
         }
     });
     drawImageText(json);
@@ -42,7 +40,7 @@ function defineImage(evt) {
 }
 
 function defineImageBinary() {
-    var image = context.getImageData(0, 0, canvas.width, canvas.height);
+    var image = context.getImageData(0, 0, whiteboard.width, whiteboard.height);
     var buffer = new ArrayBuffer(image.data.length);
     var bytes = new Uint8Array(buffer);
     for (var i=0; i<bytes.length; i++) {
@@ -70,7 +68,7 @@ function drawImageText(image) {
 function drawImageBinary(blob) {
     var bytes = new Uint8Array(blob);
     
-    var imageData = context.createImageData(canvas.width, canvas.height);
+    var imageData = context.createImageData(whiteboard.width, whiteboard.height);
     
     for (var i=8; i<imageData.data.length; i++) {
         imageData.data[i] = bytes[i];
@@ -78,7 +76,7 @@ function drawImageBinary(blob) {
     context.putImageData(imageData, 0, 0);
     
     var img = document.createElement('img');
-    img.height = canvas.height;
-    img.width = canvas.width;
-    img.src = canvas.toDataURL();
+    img.height = whiteboard.height;
+    img.width = whiteboard.width;
+    img.src = whiteboard.toDataURL();
 }
