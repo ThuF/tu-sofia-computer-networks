@@ -1,4 +1,4 @@
-var wsUri = "wss://" + document.location.hostname + ":" + document.location.port + document.location.pathname + "chat";
+var wsUri = "ws://" + document.location.hostname + ":" + document.location.port + document.location.pathname + "chat";
 var websocket = new WebSocket(wsUri);
 var username;
 
@@ -17,12 +17,12 @@ websocket.onerror = function(evt) {
 var output = document.getElementById("output");
 
 function join() {
-	username = textField.value;
+	username = textInput.value;
 	websocket.send(username + " joined");
 }
 
 function sendMessage() {
-	websocket.send(username + ": " + textField.value);
+	websocket.send(username + ": " + textInput.value);
 }
 
 function onOpen() {
