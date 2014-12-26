@@ -202,3 +202,9 @@ footer p {
 .top-buffer-lg { 
 	margin-top: 60px;
 }
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
