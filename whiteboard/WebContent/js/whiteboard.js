@@ -34,9 +34,7 @@ function defineImage(evt) {
         }
     });
     drawImageText(json);
-    if (document.getElementById("instant").checked) {
-        sendText(json);
-    }
+    sendText(json);
 }
 
 function defineImageBinary() {
