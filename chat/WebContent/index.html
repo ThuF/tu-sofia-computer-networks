@@ -1,32 +1,60 @@
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>WebSocket : Chat</title>
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="">
+
+<link href="css/bootstrap.min.css" rel="stylesheet">
+
+<link href="css/custom.css" rel="stylesheet">
+
+<link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=Josefin+Slab:100,300,400,600,700,100italic,300italic,400italic,600italic,700italic" rel="stylesheet" type="text/css">
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+<title>WebSocket: Chat</title>
 </head>
 <body>
-	<h1>WebSocket : Chat</h1>
-	<div style="text-align: center;">
+	<div class="container box">
+		<h1>WebSocket: Chat</h1>
 		<form action="">
-			<table>
-				<tr>
-					<td>Users<br /> <textarea readonly="true" rows="6" cols="20"
-							id="userField"></textarea>
-					</td>
-					<td>Chat Log<br /> <textarea readonly="true" rows="6"
-							cols="50" id="chatlogField"></textarea>
-					</td>
-				</tr>
-				<tr>
-					<td colspan="2"><input id="textField" name="name" value="Duke"
-						type="text"><br> <input onclick="join();"
-						value="Join" type="button"> <input
-						onclick="send_message();" value="Chat" type="button"></td>
-				</tr>
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Users</th>
+						<th>Messages</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td class="col-md-3">
+							<textarea id="userField" class="form-controll" style="width: 100%;" rows="5" disabled></textarea>
+						</td>
+						<td class="col-md-9">
+							<textarea id="chatlogField" class="form-controll" style="width: 100%;" rows="5" disabled></textarea>
+						</td>
+					</tr>
+				</tbody>
 			</table>
+		    <div class="input-group">
+		      	<span class="input-group-btn">
+					<button type="button" class="btn btn-default" oncanplay="join()">Join</button>
+					<button type="button" class="btn btn-default" onclick="sendMessage()">Send</button>
+		      	</span>
+		      	<input type="text" class="form-control" placeholder="Username/Message">
+		    </div>
 		</form>
+		<div id="output"></div>
 	</div>
-	<div id="output"></div>
-	<script language="javascript" type="text/javascript" src="websocket.js">
+	<script type="text/javascript" src="websocket.js">
 		
 	</script>
 </body>
